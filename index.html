@@ -182,17 +182,28 @@
     }
 
     .about-photo {
-      background: linear-gradient(135deg, #fef7ee, #f1e3d4);
+      background-image: url('about-photo.png');
+      background-size: cover;
+      background-position: center;
       border-radius: 18px;
-      min-height: 220px;
+      min-height: 260px;
       padding: 20px;
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
     }
+
+    .about-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25); /* subtle dark overlay */
+    }
+
+
 
     .about-photo::before {
       content: "";
@@ -203,11 +214,12 @@
     }
 
     .about-photo-text {
-      position: relative;
-      z-index: 1;
-      color: #7a6651;
-      font-size: 14px;
-    }
+        position: relative;
+        z-index: 2;
+        color: #fff; /* white now looks better on photos */
+        font-size: 14px;
+      }
+
 
     /* Events */
 
