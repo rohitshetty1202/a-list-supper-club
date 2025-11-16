@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The A List Supper Club</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f7f2e9;
+      --bg-alt: #f0e6d8;
+      --card-bg: #fdf7ee;
+      --text: #2f261b;
+      --muted: #6c5a46;
+      --accent: #c7a27b;
+      --accent-dark: #a58055;
+      --border: #e1d4c2;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .site-title {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 40px 0 48px;
+      text-align: center;
+    }
+
+    .hero-heading {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 40px);
+      margin: 0 0 12px;
+    }
+
+    .hero-subtitle {
+      max-width: 520px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+        box-shadow 0.18s ease, transform 0.12s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Sections */
+
+    section {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    /* About */
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      margin: 0 0 12px;
+    }
+
+    .about-text p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .about-photo {
+      background: linear-gradient(135deg, #fef7ee, #f1e3d4);
+      border-radius: 18px;
+      min-height: 220px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-photo::before {
+      content: "";
+      position: absolute;
+      inset: 24px 32px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .about-photo-text {
+      position: relative;
+      z-index: 1;
+      color: #7a6651;
+      font-size: 14px;
+    }
+
+    /* Events */
+
+    .events-intro {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .event-card {
+      background-color: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+    }
+
+    .event-title {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+
+    .event-meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .event-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .event-card .btn {
+      align-self: flex-start;
+    }
+
+    /* Gallery */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-item {
+      background: linear-gradient(135deg, #f8ede0, #f3dfcd);
+      border-radius: 14px;
+      min-height: 120px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item span {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      font-size: 13px;
+      color: #725847;
+      background: rgba(247, 242, 233, 0.9);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .gallery-caption {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Join */
+
+    .join-inner {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .join-inner h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .join-inner p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* Contact */
+
+    .contact-inner {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    .contact-list li {
+      margin-bottom: 6px;
+    }
+
+    .contact-label {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 0 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer span {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .about {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .events-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px 14px 40px;
+      }
+
+      header {
+        margin-bottom: 20px;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .events-grid,
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-photo {
+        min-height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-mark">THE A LIST</div>
+      <h1 class="site-title">Supper Club</h1>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <h2 class="hero-heading">A Modern Supper Club Experience</h2>
+      <p class="hero-subtitle">
+        Dinners that blend great food, warm energy, and new friendships.
+      </p>
+      <div class="hero-actions">
+        <!-- TODO: replace #join with your real Google Form link if you prefer -->
+        <a href="#join" class="btn btn-primary">Join the guest list</a>
+        <a href="#events" class="btn btn-outline">Upcoming events</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="about">
+        <div class="about-photo" aria-hidden="true">
+          <div class="about-photo-text">
+            Candlelit tables, shared plates, easy conversation.  
+            We keep it small, slow, and intentional.
+          </div>
+        </div>
+        <div class="about-text">
+          <h2>What We’re All About</h2>
+          <p>
+            The A List Supper Club is a cozy, invite-only dining experience hosted by
+            Amanda and Amruta. We bring people together around a beautiful table and a
+            thoughtfully planned menu.
+          </p>
+          <p>
+            Each dinner has a theme, a curated 4-course meal, a signature drink, and a
+            relaxed vibe so new connections feel natural, not forced.
+          </p>
+          <p>
+            Come for the food, stay for the people — and leave with a few new friends.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events">
+      <h2 class="section-heading">What’s Cooking Next</h2>
+      <p class="events-intro">
+        We host small, themed suppers in and around North Texas. Spots are limited so
+        RSVPs are always required.
+      </p>
+      <div class="events-grid">
+        <article class="event-card">
+          <div>
+            <h3 class="event-title">A Very Merry Supper</h3>
+            <div class="event-meta">
+              December 13 · 6 PM<br />
+              Little Elm, TX
+            </div>
+            <p class="event-desc">
+              A cozy holiday dinner with a 4-course menu, festive drinks, and
+              Christmas-themed games.
+            </p>
+          </div>
+          <a href="#join" class="btn btn-primary">RSVP</a>
+        </article>
+
+        <article class="event-card">
+          <div>
+            <h3 class="event-title">Thanksgiving Supper Club</h3>
+            <div class="event-meta">
+              November 22 · 6 PM<br />
+              Celina, TX
+            </div>
+            <p class="event-desc">
+              An Indian-American Friendsgiving feast, family-style sharing plates, and
+              plenty of gratitude.
+            </p>
+          </div>
+          <a href="#join" class="btn btn-primary">RSVP</a>
+        </article>
+
+        <article class="event-card">
+          <div>
+            <h3 class="event-title">Diwali Dinner</h3>
+            <div class="event-meta">
+              Date TBA · Evening<br />
+              North Dallas
+            </div>
+            <p class="event-desc">
+              A warm, light-filled celebration with festive bites, chai, and sweet
+              endings.
+            </p>
+          </div>
+          <a href="#join" class="btn btn-primary">Join interest list</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <h2 class="section-heading">Moments From Past Suppers</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <span>Cozy candlelight</span>
+        </div>
+        <div class="gallery-item">
+          <span>Seasonal plates</span>
+        </div>
+        <div class="gallery-item">
+          <span>Good company</span>
+        </div>
+      </div>
+      <p class="gallery-caption">
+        Every table is set with intention — simple, warm, and ready for good conversation.
+      </p>
+    </section>
+
+    <!-- Join -->
+    <section id="join">
+      <div class="join-inner">
+        <h2>Join the Guest List</h2>
+        <p>
+          Want first dibs on new dates and themes? Add your name to the guest list and
+          we’ll email you when a new supper goes live.
+        </p>
+        <!-- TODO: replace # with your Google Form link -->
+        <a href="#" class="btn btn-primary">Add me to the list</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="contact-inner">
+        <h2 class="section-heading" style="margin-bottom: 12px;">Stay Connected</h2>
+        <p>
+          Have a question, brand collab idea, or want to host a private supper?
+          Reach out — we’d love to chat.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">Instagram:</span>
+            <a href="https://instagram.com/thealistsupperclub" target="_blank" rel="noreferrer">
+              @thealistsupperclub
+            </a>
+          </li>
+          <li>
+            <span class="contact-label">Email:</span>
+            <a href="mailto:alistsupperclub@gmail.com">alistsupperclub@gmail.com</a>
+          </li>
+          <!-- Add or edit as needed -->
+          <!-- <li><span class="contact-label">WhatsApp:</span> link here</li> -->
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <span>© The A List Supper Club · Hosted by Amanda &amp; Amruta</span>
+    </footer>
+  </div>
+</body>
+</html>
