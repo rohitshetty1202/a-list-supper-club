@@ -258,6 +258,25 @@
       align-self: flex-start;
     }
 
+    .event-card--sold-out {
+      position: relative;
+      opacity: 0.9;
+    }
+    
+    .sold-out-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #c7a27b;
+      color: #ffffff;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+
     /* Gallery */
 
     .gallery-grid {
@@ -455,20 +474,24 @@
           <a href="https://forms.gle/EzQGHDPUMn5bdzkm6" class="btn btn-primary">RSVP</a>
         </article>
 
-        <article class="event-card">
+        <article class="event-card event-card--sold-out">
           <div>
+            <div class="sold-out-badge">Sold Out</div>
+        
             <h3 class="event-title">Thanksgiving Supper Club</h3>
             <div class="event-meta">
               November 22 · 6 PM<br />
               Celina, TX
             </div>
             <p class="event-desc">
-              An Indian-American Friendsgiving feast, family-style sharing plates, and
-              plenty of gratitude.
+              This Friendsgiving supper is fully booked, but don’t worry —
+              we’ve got more themed dinners coming soon. Add your name to the
+              guest list to hear about the next event.
             </p>
           </div>
-          <a href="#join" class="btn btn-primary">RSVP</a>
+          <a href="#join" class="btn btn-outline">Join waitlist</a>
         </article>
+
       </div>
     </section>
 
